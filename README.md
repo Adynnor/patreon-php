@@ -62,7 +62,7 @@ $pledge = null;
  * Given a resource in the document, you can access its relationships with ->relationship->($relationship_name)
  * or check for a relationship's existence with ->has('relationships.relationship_name')
  */
-if ($user->has('relationships.pledges')) {
+if ($patron->has('relationships.pledges')) {
     /*
      * To look up the full resource that the relationship is referencing,
      * we have extended [art4/json-api-client/ResourceIdentifier](https://github.com/Art4/json-api-client/blob/master/docs/objects-resource-identifier.md)
@@ -70,7 +70,7 @@ if ($user->has('relationships.pledges')) {
      * You pass in the original response document, and you get back a full resource,
      * with attributes, relationships, etc.
      */
-    $pledges = $user->relationship('pledges')->resolve($user_response);
+    $pledges = $patron->relationship('pledges')->resolve($user_response);
     $pledge = $pledges[0];
     // Can now check attributes, e.g. $pledge->attribute('amount_cents');
 }
